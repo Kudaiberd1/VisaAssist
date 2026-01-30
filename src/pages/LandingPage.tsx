@@ -14,7 +14,7 @@ const LandingPage = () => {
                 <Header />
 
                 <main className="flex-grow bg-[rgb(246,246,248)] max-w-8xl">
-                    <div className="relative mt-7 mb-[44px] h-[560px] max-w-8xl rounded-xl shadow-md mx-[50px]">
+                    <div className="relative mt-7 mb-[44px] h-[560px] max-w-8xl rounded-xl shadow-md mx-[50px]" id={"about"}>
                         <img
                             src={backgroundImage}
                             alt="Background"
@@ -162,8 +162,7 @@ const LandingPage = () => {
                         </div>
                     </div>
 
-                    {/* Contacts */}
-                    <section id="contacts" className="mx-[50px] mb-20">
+                    <section id="contacts" className="mx-[50px] mb-20" itemID={"contacts"}>
                         <div className="mb-10 text-center">
                             <h2 className="text-[36px] font-semibold">Свяжитесь с нами</h2>
                             <p className="mx-auto mt-2 max-w-2xl text-gray-600">
@@ -174,7 +173,7 @@ const LandingPage = () => {
                         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
 
                             <div className="rounded-2xl bg-white p-10 shadow-md hover:shadow-lg transition-shadow">
-                                <h3 className="text-xl font-semibold mb-6">Контакты</h3>
+                                <h3 className="text-2xl font-bold mb-6">Контакты</h3>
 
                                 <div className="space-y-5 text-gray-700">
                                     <div className="flex items-start gap-3">
@@ -226,9 +225,8 @@ const LandingPage = () => {
                                 </div>
                             </div>
 
-                            {/* Contact form */}
                             <div className="rounded-2xl bg-white p-10 shadow-md hover:shadow-lg transition-shadow">
-                                <h3 className="text-xl font-semibold mb-2">Оставьте заявку</h3>
+                                <h3 className="text-2xl font-bold mb-2">Оставьте заявку</h3>
                                 <p className="text-gray-600 mb-6">Мы ответим в ближайшее время.</p>
 
                                 <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
