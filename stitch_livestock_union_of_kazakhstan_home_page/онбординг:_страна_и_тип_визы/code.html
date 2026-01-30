@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+
+<html class="light" lang="ru"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Онбординг: Страна и тип визы</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>body {
+    font-family: "Inter", sans-serif
+    }
+.custom-select {
+    appearance: none;
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBXlsMVJVyrB4Ut78wsPCC39Rl2czm15h8MWRO2kPJ5W3jx0xWpPbNtMhVF1zSjuabzeUuD8sMZe4jqORnV25gCfjw-pPPQlfgMzSxzT09LqN4mLsjWqeH3PsVkM-Dnj7orOFNQGOEaCsl1rXplHTCtS12jkDYTL2S0es6YnXuTj7fcbaSA0uoNbllVtq6v-MYLCIv9jL5E4fvJ80pHu8_a78u2ts-N5WHNcvsFZopsEINq332VEe4LU5_7dxmDs1qTNPFpNTBkoAI);
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1.5em
+    }</style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen flex flex-col transition-colors duration-200">
+<!-- Header / Logo Area -->
+<header class="w-full py-6 px-8 flex justify-between items-center max-w-7xl mx-auto">
+<div class="flex items-center gap-2">
+<div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined">flight_takeoff</span>
+</div>
+<span class="text-xl font-bold text-[#0d121b] dark:text-white">VisaFlow</span>
+</div>
+<button class="text-[#4c669a] dark:text-gray-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+</header>
+<main class="flex-1 flex items-center justify-center px-4 py-10">
+<div class="w-full max-w-[520px] bg-white dark:bg-[#1a212f] rounded-xl shadow-sm border border-[#cfd7e7] dark:border-gray-800 overflow-hidden">
+<!-- Progress Bar Section -->
+<div class="p-6 border-b border-[#f0f2f5] dark:border-gray-800">
+<div class="flex justify-between items-end mb-3">
+<div>
+<p class="text-xs font-semibold uppercase tracking-wider text-primary mb-1">Шаг 1 из 3</p>
+<h3 class="text-[#0d121b] dark:text-white text-lg font-bold leading-tight">Основная информация</h3>
+</div>
+<p class="text-[#4c669a] dark:text-gray-400 text-sm font-medium">33%</p>
+</div>
+<div class="w-full bg-[#cfd7e7] dark:bg-gray-700 h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-1/3 transition-all duration-500 rounded-full"></div>
+</div>
+</div>
+<!-- Form Section -->
+<div class="p-8 space-y-6">
+<div class="text-center mb-8">
+<h2 class="text-[#0d121b] dark:text-white text-2xl font-bold tracking-tight">Страна и тип визы</h2>
+<p class="text-[#4c669a] dark:text-gray-400 mt-2">Укажите основные параметры вашей поездки для подбора документов</p>
+</div>
+<div class="space-y-5">
+<!-- Country Dropdown -->
+<div class="flex flex-col gap-2">
+<label class="text-[#0d121b] dark:text-gray-200 text-sm font-semibold flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">public</span>
+                            Страна назначения
+                        </label>
+<div class="relative">
+<select class="custom-select w-full h-14 rounded-lg border border-[#cfd7e7] dark:border-gray-700 bg-white dark:bg-[#1a212f] px-4 text-[#0d121b] dark:text-white focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none appearance-none">
+<option disabled="" selected="" value="">Выберите страну</option>
+<option value="spain">Испания</option>
+<option value="netherlands">Нидерланды</option>
+<option value="france">Франция</option>
+<option value="italy">Италия</option>
+</select>
+</div>
+</div>
+<!-- Visa Type (Pre-selected) -->
+<div class="flex flex-col gap-2">
+<label class="text-[#0d121b] dark:text-gray-200 text-sm font-semibold flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">assignment_ind</span>
+                            Тип визы
+                        </label>
+<div class="relative group">
+<input class="w-full h-14 rounded-lg border border-[#cfd7e7] dark:border-gray-700 bg-[#f8f9fc] dark:bg-[#141a26] px-4 text-[#0d121b] dark:text-white focus:outline-none cursor-default" readonly="" type="text" value="Туризм"/>
+<div class="absolute right-4 top-1/2 -translate-y-1/2 text-[#4c669a]">
+<span class="material-symbols-outlined text-xl">lock</span>
+</div>
+</div>
+</div>
+<!-- City (Pre-filled) -->
+<div class="flex flex-col gap-2">
+<label class="text-[#0d121b] dark:text-gray-200 text-sm font-semibold flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">location_on</span>
+                            Город подачи
+                        </label>
+<input class="w-full h-14 rounded-lg border border-[#cfd7e7] dark:border-gray-700 bg-white dark:bg-[#1a212f] px-4 text-[#0d121b] dark:text-white focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none" placeholder="Введите город" type="text" value="Алматы"/>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="p-8 pt-0 flex gap-4">
+<button class="flex-1 h-14 flex items-center justify-center gap-2 rounded-lg border border-[#cfd7e7] dark:border-gray-700 text-[#0d121b] dark:text-white font-semibold hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+<span class="material-symbols-outlined text-xl">arrow_back</span>
+                    Назад
+                </button>
+<button class="flex-[2] h-14 flex items-center justify-center gap-2 rounded-lg bg-primary text-white font-semibold hover:bg-[#0e48c2] transition-colors shadow-lg shadow-primary/20">
+                    Далее
+                    <span class="material-symbols-outlined text-xl">arrow_forward</span>
+</button>
+</div>
+<div class="px-8 pb-8 text-center">
+<p class="text-xs text-[#4c669a] dark:text-gray-500">
+                    Нажимая «Далее», вы соглашаетесь с условиями обработки персональных данных
+                </p>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-8 text-center border-t border-[#cfd7e7] dark:border-gray-800 mt-auto">
+<p class="text-[#4c669a] dark:text-gray-500 text-sm flex items-center justify-center gap-4">
+<span>© 2024 VisaFlow Assistance</span>
+<span class="w-1 h-1 bg-[#cfd7e7] rounded-full"></span>
+<a class="hover:underline" href="#">Политика конфиденциальности</a>
+</p>
+</footer>
+</body></html>
