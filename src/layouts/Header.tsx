@@ -1,28 +1,46 @@
-import logo from "../assets/logo.png"
+import logo from "../assets/logo.png";
 import { useAuth } from "../store/auth/AuthContext.tsx";
 import { CgProfile } from "react-icons/cg";
 import { FiLogOut } from "react-icons/fi";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const Header = () => {
 
     const { isAuth, logout } = useAuth();
     const nav = useNavigate();
+    const [mobileOpen, setMobileOpen] = useState(false);
+
+    const closeMobile = () => setMobileOpen(false);
+
+    useEffect(() => {
+        const onResize = () => {
+            if (window.innerWidth >= 768) setMobileOpen(false);
+        };
+        window.addEventListener("resize", onResize);
+        return () => window.removeEventListener("resize", onResize);
+    }, []);
 
     return (
         <header className="sticky top-0 z-50 w-full border-b border-slate-200/80 bg-white/95 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-white/80">
             <div className="mx-auto flex h-16 max-w-8xl items-center justify-between px-4 sm:px-6 lg:px-8">
 
-                <p onClick={() => nav("/")} className="flex items-center gap-3 cursor-pointer">
+                <div
+                    onClick={() => {
+                        nav("/");
+                        closeMobile();
+                    }}
+                    className="flex items-center gap-3 cursor-pointer"
+                >
                     <img
                         src={logo}
-                        className="h-[90px] w-[90px] rounded-lg object-contain"
+                        className="h-10 w-10 rounded-lg object-contain"
                         alt="VisaAssist"
                     />
-                    <span className="text-base font-semibold tracking-tight text-slate-900 ps-[75px] absolute">
+                    <span className="text-base font-semibold tracking-tight text-slate-900">
                         VisaAssist
                     </span>
-                </p>
+                </div>
 
                 <div className="hidden flex-1 items-center justify-end gap-3 md:flex">
                     <nav className="flex items-center gap-3" aria-label="Primary">
@@ -40,7 +58,24 @@ const Header = () => {
                         </p>
                     </nav>
                 </div>
-                <div className="flex items-center gap-2 ms-3">
+                <button
+                    type="button"
+                    className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 shadow-sm hover:bg-slate-50"
+                    aria-label="Open menu"
+                    aria-expanded={mobileOpen}
+                    onClick={() => setMobileOpen((v) => !v)}
+                >
+                    {mobileOpen ? (
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5">
+                            <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+                        </svg>
+                    ) : (
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5">
+                            <path fillRule="evenodd" d="M3 5h14a1 1 0 110 2H3a1 1 0 110-2zm0 4h14a1 1 0 110 2H3a1 1 0 110-2zm0 4h14a1 1 0 110 2H3a1 1 0 110-2z" clipRule="evenodd" />
+                        </svg>
+                    )}
+                </button>
+                <div className="hidden md:flex items-center gap-2 ms-3">
                     {!isAuth ? (
                         <>
                             <p
@@ -77,6 +112,88 @@ const Header = () => {
                     )}
                 </div>
             </div>
+        {mobileOpen && (
+            <div className="md:hidden border-t border-slate-200 bg-white/95 backdrop-blur">
+                <div className="mx-auto max-w-8xl px-4 sm:px-6 lg:px-8 py-4">
+                    <nav className="flex flex-col gap-2" aria-label="Mobile">
+                        <button
+                            type="button"
+                            onClick={() => {
+                                nav("/");
+                                closeMobile();
+                            }}
+                            className="w-full text-left rounded-xl px-4 py-3 text-sm font-semibold text-slate-800 hover:bg-slate-50"
+                        >
+                            Главная
+                        </button>
+                        <button
+                            type="button"
+                            onClick={() => {
+                                nav("/dashboard");
+                                closeMobile();
+                            }}
+                            className="w-full text-left rounded-xl px-4 py-3 text-sm font-semibold text-slate-800 hover:bg-slate-50"
+                        >
+                            Мои поездки
+                        </button>
+                    </nav>
+
+                    <div className="mt-4 border-t border-slate-200 pt-4">
+                        {!isAuth ? (
+                            <div className="flex flex-col gap-3">
+                                <button
+                                    type="button"
+                                    onClick={() => {
+                                        nav("/login");
+                                        closeMobile();
+                                    }}
+                                    className="inline-flex h-11 w-full items-center justify-center rounded-xl border border-slate-200 bg-white px-4 text-sm font-semibold text-slate-800 shadow-sm hover:bg-slate-50"
+                                >
+                                    Войти
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={() => {
+                                        nav("/register");
+                                        closeMobile();
+                                    }}
+                                    className="inline-flex h-11 w-full items-center justify-center rounded-xl bg-blue-600 px-4 text-sm font-semibold text-white shadow-sm hover:bg-blue-700"
+                                >
+                                    Зарегистрироваться
+                                </button>
+                            </div>
+                        ) : (
+                            <div className="flex flex-col gap-3">
+                                <button
+                                    type="button"
+                                    onClick={() => {
+                                        nav("/profile");
+                                        closeMobile();
+                                    }}
+                                    className="inline-flex h-11 w-full items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-4 text-sm font-semibold text-slate-800 shadow-sm hover:bg-slate-50"
+                                >
+                                    <CgProfile className="h-5 w-5" />
+                                    Профиль
+                                </button>
+
+                                <button
+                                    type="button"
+                                    onClick={() => {
+                                        logout();
+                                        nav("/login");
+                                        closeMobile();
+                                    }}
+                                    className="inline-flex h-11 w-full items-center justify-center gap-2 rounded-xl bg-red-50 px-4 text-sm font-semibold text-red-700 shadow-sm hover:bg-red-100"
+                                >
+                                    <FiLogOut className="h-5 w-5" />
+                                    Выйти
+                                </button>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            </div>
+        )}
         </header>
     );
 };
