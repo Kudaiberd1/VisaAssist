@@ -34,29 +34,29 @@ const Footer = () => {
                         <div>
                             <p className="font-bold">Сервис</p>
                             <ul className="mt-4 space-y-2 text-sm">
-                                <li><p onClick={() => nav("/dashboard")} className="text-gray-500 cursor-pointer hover:text-blue-700">Проверка анкеты</p></li>
-                                <li><p onClick={() => nav("/profile")} className="text-gray-500 cursor-pointer hover:text-blue-700">Чек-лист</p></li>
-                                <li><p onClick={() => nav("/premium")} className="text-gray-500 cursor-pointer hover:text-blue-700">Купить премиум</p></li>
+                                <li><button onClick={() => nav("/dashboard")} className="text-gray-500 cursor-pointer hover:text-blue-700">Проверка анкеты</button></li>
+                                <li><button onClick={() => nav("/profile")} className="text-gray-500 cursor-pointer hover:text-blue-700">Чек-лист</button></li>
+                                <li><button onClick={() => goToSection("hero", "/premium")} className="text-gray-500 cursor-pointer hover:text-blue-700">Купить премиум</button></li>
                             </ul>
                         </div>
                         <div>
                             <p className="font-bold">Компания</p>
                             <ul className="mt-4 space-y-2 text-sm">
                                 <li>
-                                    <p
-                                        onClick={() => goToSection("about")}
+                                    <button
+                                        onClick={() => goToSection("about", "/")}
                                         className="text-gray-500 cursor-pointer hover:text-blue-700"
                                     >
                                         О нас
-                                    </p>
+                                    </button>
                                 </li>
                                 <li>
-                                    <p
-                                        onClick={() => goToSection("contacts")}
+                                    <button
+                                        onClick={() => goToSection("contacts", "/")}
                                         className="text-gray-500 cursor-pointer hover:text-blue-700"
                                     >
                                         Контакты
-                                    </p>
+                                    </button>
                                 </li>
                             </ul>
                         </div>
