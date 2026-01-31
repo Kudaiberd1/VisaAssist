@@ -1,4 +1,4 @@
-import logo from "../assets/logo.png";
+import logo from "../assets/logo.svg"
 import { useAuth } from "../store/auth/AuthContext.tsx";
 import { CgProfile } from "react-icons/cg";
 import { FiLogOut } from "react-icons/fi";
@@ -34,7 +34,7 @@ const Header = () => {
                 >
                     <img
                         src={logo}
-                        className="h-10 w-10 rounded-lg object-contain"
+                        className="h-12 w-12 rounded-lg object-contain"
                         alt="VisaAssist"
                     />
                     <span className="text-base font-semibold tracking-tight text-slate-900">

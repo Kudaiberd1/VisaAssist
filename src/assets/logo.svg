@@ -1,0 +1,135 @@
+<svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 512 512"
+        width="512"
+        height="512"
+        fill="none"
+>
+    <defs>
+        <!-- Main gradients -->
+        <linearGradient id="gBody" x1="165" y1="270" x2="410" y2="150" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#2ED0FF"/>
+            <stop offset="0.45" stop-color="#0B63FF"/>
+            <stop offset="1" stop-color="#0830E6"/>
+        </linearGradient>
+
+        <linearGradient id="gWing" x1="190" y1="255" x2="365" y2="210" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#51E6FF"/>
+            <stop offset="0.55" stop-color="#1A8CFF"/>
+            <stop offset="1" stop-color="#0A36EE"/>
+        </linearGradient>
+
+        <linearGradient id="gTrail" x1="180" y1="315" x2="295" y2="300" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#D7FAFF" stop-opacity="0.0"/>
+            <stop offset="0.3" stop-color="#BFF4FF" stop-opacity="0.55"/>
+            <stop offset="1" stop-color="#7EDCFF" stop-opacity="0.85"/>
+        </linearGradient>
+
+        <!-- Glow filters -->
+        <filter id="glowBlue" x="-60" y="-60" width="640" height="640" color-interpolation-filters="sRGB">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="b1"/>
+            <feColorMatrix
+                    in="b1"
+                    type="matrix"
+                    values="
+          0 0 0 0 0.05
+          0 0 0 0 0.45
+          0 0 0 0 1
+          0 0 0 0.9 0"
+                    result="b2"
+            />
+            <feGaussianBlur in="b2" stdDeviation="18" result="b3"/>
+            <feMerge>
+                <feMergeNode in="b3"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+
+        <filter id="softShadow" x="-60" y="-60" width="640" height="640" color-interpolation-filters="sRGB">
+            <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#0B4CFF" flood-opacity="0.25"/>
+            <feDropShadow dx="0" dy="0" stdDeviation="8" flood-color="#5EE6FF" flood-opacity="0.22"/>
+        </filter>
+    </defs>
+
+    <!-- TRAIL (3 light streaks) -->
+    <g filter="url(#softShadow)" opacity="0.95">
+        <path
+                d="M150 330 C 190 312, 230 303, 272 298
+         C 226 300, 186 308, 148 322
+         Z"
+                fill="url(#gTrail)"
+        />
+        <path
+                d="M170 353 C 206 338, 240 332, 270 330
+         C 238 332, 205 338, 168 346
+         Z"
+                fill="url(#gTrail)"
+                opacity="0.75"
+        />
+        <path
+                d="M188 376 C 220 365, 247 362, 268 362
+         C 246 362, 217 365, 186 370
+         Z"
+                fill="url(#gTrail)"
+                opacity="0.55"
+        />
+    </g>
+
+    <!-- PLANE -->
+    <g filter="url(#glowBlue)">
+        <!-- Top wing -->
+        <path
+                d="M135 282
+         L392 150
+         C410 141, 430 150, 420 170
+         L360 286
+         C351 304, 331 314, 312 309
+         L160 269
+         C142 264, 121 292, 135 282
+         Z"
+                fill="url(#gWing)"
+        />
+
+        <!-- Body / main triangle -->
+        <path
+                d="M312 309
+         L420 170
+         C430 156, 447 164, 441 183
+         L368 404
+         C362 422, 339 426, 328 411
+         L264 322
+         C254 308, 296 330, 312 309
+         Z"
+                fill="url(#gBody)"
+        />
+
+        <!-- Inner cut / highlight edge -->
+        <path
+                d="M298 312
+         L386 200
+         C392 192, 402 196, 398 206
+         L350 330
+         C346 340, 334 343, 327 335
+         L286 288
+         C280 281, 292 320, 298 312
+         Z"
+                fill="#B7F4FF"
+                opacity="0.18"
+        />
+
+        <!-- Outline hint for crispness -->
+        <path
+                d="M135 282
+         L392 150
+         C410 141, 430 150, 420 170
+         L360 286
+         C351 304, 331 314, 312 309
+         L160 269"
+                stroke="#3AA9FF"
+                stroke-opacity="0.35"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+        />
+    </g>
+</svg>
