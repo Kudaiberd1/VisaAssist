@@ -112,7 +112,7 @@ const MyTrips = () => {
                                     <p className="text-sm text-gray-600">Наши специалисты помогут собрать полный пакет документов для любой страны Шенгена.</p>
                                 </div>
                             </div>
-                            <button onClick={() => goToSection("contacts")} className="inline-flex w-full justify-center sm:w-auto text-sm font-semibold text-blue-600 hover:underline">
+                            <button onClick={() => goToSection("contacts", "/")} className="inline-flex w-full justify-center sm:w-auto text-sm font-semibold text-blue-600 hover:underline">
                                 Связаться с поддержкой
                             </button>
                         </div>
